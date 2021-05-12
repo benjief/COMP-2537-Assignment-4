@@ -1,0 +1,109 @@
+body {
+  display: grid;
+  grid-template-rows: 10% 85% 5%;
+  grid-template-areas: 
+    "audioPlayer"
+    "form"
+    "footer";
+  align-items: center;
+  font-family: 'Press Start 2P', Arial, Helvetica, sans-serif;
+  margin: 0px;
+  padding: 0px;
+  height: 100vh;
+  background: url("/img/home-background.jpg");
+  background-size: cover;
+  overflow: auto;
+}
+
+#audioPlayer {
+  grid-area: audioPlayer;
+  padding-left: 10px;
+}
+
+#errorMsg {
+  color: rgb(0, 132, 255);
+}
+
+#formPanel {
+  grid-area: form;
+  background-color: rgba(255, 0, 0, 0.849);
+  box-shadow: 0 0 25px rgba(0,0,0,0.1), 0 5px 10px -3px rgba(0,0,0,0.13);
+  border-radius: 1em;
+  backdrop-filter: blur(6px);
+  justify-self: center;
+  width: 90%;
+  max-width: 350px;
+}
+
+
+footer {
+  grid-area: footer;
+  background-color: rgb(0, 185, 31);
+  color: white;
+  text-align: center;
+/*        filter: blur(0.6px);*/
+}
+
+#formTitle {
+  font-size: 15pt;
+}
+
+#loginForm {
+  color: white;
+  text-align: center;
+}
+
+#loginForm a {
+  color: white;
+}
+
+#loginForm>input {
+  font-size: 1.1em;
+  display: block;
+  margin: 0 auto;
+  margin-top: 1em;
+  outline: none;
+  border: none;
+  text-align: center;
+  color: #212121;
+  padding: 0.4em;
+  background-color: rgba(255,255,255,0.7);
+  border-radius: 6px;
+}
+
+
+#loginForm>input[type="button"] {
+  background-color: transparent;
+  border: 3px solid #f2f2f8;
+  color: #f2f2f8;
+  transform: translate3D(0, 0, 0);
+  transition: color 0.3s, background-color 0.3s, transform 0.15s;
+  cursor: pointer;
+}
+#loginForm>input[type="button"]:hover {
+  color: #212121;
+  background-color: #f2f2f8;
+  outline: none;
+}
+#loginForm>input[type="button"]:focus {
+  outline: none;
+}
+#loginForm>input[type="button"]:active {
+  transform: translate3D(0, 5px, 0);
+  outline: none;
+}
+
+#loginForm>p {
+  margin: 1em;
+}
+
+#loginForm>p>span {
+  text-align: center;
+  font-size: 1.1em;
+  color: red;
+  display: none;
+}
+
+a {
+  color: #e83e8c;
+}
