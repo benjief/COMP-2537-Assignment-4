@@ -1,4 +1,4 @@
-
+// Requires
 const express = require('express');
 const session = require('express-session')
 const app = express();
@@ -154,13 +154,13 @@ app.get('/profile', function(req, res) {
         $template("#profile_name").html(req.session.email);
 
         // insert the left column from a different file (or could be a DB or ad network, etc.)
-        let left = fs.readFileSync('./assets/templates/left_content.html', "utf8");
+        let left = fs.readFileSync('./assets/templates/left_card.html', "utf8");
         let leftDOM = new JSDOM(left);
         let $left = require("jquery")(leftDOM.window);
         // Replace!
-        $template("#left_placeholder").replaceWith($left("#left_column"));
+        $template("#left_placeholder").replaceWith($left("#left_card"));
 
-        // insert the left column from a different file (or could be a DB or ad network, etc.)
+        // insert the middle column from a different file (or could be a DB or ad network, etc.)
         let middle = fs.readFileSync('./assets/templates/middle_content.html', "utf8");
         let middleDOM = new JSDOM(middle);
         let $middle = require("jquery")(middleDOM.window);
@@ -168,7 +168,7 @@ app.get('/profile', function(req, res) {
         $template("#middle_placeholder").replaceWith($middle("#middle_column"));
 
 
-        // insert the left column from a different file (or could be a DB or ad network, etc.)
+        // insert the right column from a different file (or could be a DB or ad network, etc.)
         let right = fs.readFileSync('./assets/templates/right_content.html', "utf8");
         let rightDOM = new JSDOM(right);
         let $right = require("jquery")(rightDOM.window);

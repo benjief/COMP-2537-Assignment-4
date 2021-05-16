@@ -1,17 +1,6 @@
-@font-face {
-    font-family: 'comfortaaregular';
-    src: url('/fonts/comfortaa-variablefont_wght-webfont.eot');
-    src: url('/fonts/comfortaa-variablefont_wght-webfont.eot?#iefix') format('embedded-opentype'),
-         url('/fonts/comfortaa-variablefont_wght-webfont.woff2') format('woff2'),
-         url('/fonts/comfortaa-variablefont_wght-webfont.woff') format('woff'),
-         url('/fonts/comfortaa-variablefont_wght-webfont.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
-}
-
 body {
-  font-family: "comfortaaregular";
-  font-size: 18pt;
+  font-family: 'Press Start 2P', Arial, Helvetica, sans-serif;
+  font-size: 15pt;
   margin: 0px;
   padding: 0px;
   color: white;
@@ -26,10 +15,6 @@ body {
 
 .purple_title_text {
   color: #6610f2;
-  font-size: 1.2em;
-}
-
-.reg_title_text {
   font-size: 1.2em;
 }
 
@@ -63,12 +48,49 @@ body {
   backdrop-filter: blur(8px);
 }
 
-.black_background_content {
+.pokemon_card {
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: 20% 80%;
+  grid-template-areas:
+    "pokemon_name"
+    "pokemon_sprite";
+  align-content: center;
+  width: 100%;
   background-color: black;
   background-clip: border-box;
   border: 2px solid #6610f2;
   border-radius: 0.75rem;
   padding: 0.5em;
+}
+
+.text_container {
+  display: flex;
+  justify-content: center;
+  height: 70px;
+  border-bottom: 5px solid teal;
+  width: 80%;
+  justify-self: center;
+}
+
+.text_container p {
+  display: flex;
+  height: 100%;
+  align-items: center;
+  margin: 0;
+}
+
+.pokemon_name {
+  grid-area: pokemon_name;
+  font-weight: 600;
+  font-size: 27pt;
+  letter-spacing: 2px;
+}
+
+.pokemon_sprite {
+  grid-area: pokemon_sprite;
+  max-width: 80%;
+  justify-self: center;
 }
 
 .purple_background_content {
@@ -78,10 +100,15 @@ body {
   padding: 0.5em;
 }
 
-#left_column {
+#left_card {
+  justify-content: center;
   grid-column: 2 / span 1;
   grid-row: 3 / span 1;
   overflow: auto;
+}
+
+#left_sprite {
+  grid-area: left_sprite;
 }
 
 #middle_column {
@@ -111,7 +138,8 @@ a {
 
 
 input[type='submit'] {
-  font-size: 1.2em;
+  font-family: "Press Start 2P";
+  font-size: 0.8em;
   background-color: transparent;
   border: 3px solid #e83e8c;
   color: #e83e8c;
@@ -137,8 +165,6 @@ input[type='submit']:active {
   transform: translate3D(0, 5px, 0);
   outline: none;
 }
-
-
 
 .hero_image_banner #profile_name {
   font-size: 0.8em;
