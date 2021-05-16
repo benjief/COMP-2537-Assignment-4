@@ -11,48 +11,25 @@ body {
 #content {
   display: grid;
   grid-template-columns: 4vw 28vw 4vw 28vw 4vw 28vw 4vw;
-  grid-template-rows: 22vh 4vh 70vh 4vh;
-}
-
-.purple_title_text {
-  color: #6610f2;
-  font-size: 1.2em;
+  grid-template-rows: 7vh 4vh 85vh 4vh;
 }
 
 .badge_text {
-  font-size: 0.7rem;
-  font-weight: 800;
+  font-size: 7.5pt;
+  font-weight: 500;
   color: white;
-  background-color: #e83e8c;
+  background-color: #ff0000;
   padding: 0.35em 0.4em;
   border-radius: 0.25rem;
+  box-shadow: 1px 1px 2px rgb(59, 59, 59);
   display: inline-block;
   transform: translateY(-80%);
-}
-
-.badge_text_greyed_out {
-  font-size: 0.7rem;
-  font-weight: 800;
-  color: rgba(255, 255, 255, 0.5);
-  background-color: #e83e8c;
-  padding: 0.35em 0.4em;
-  border-radius: 0.25rem;
-  display: inline-block;
-  transform: translateY(-80%);
-}
-
-.menu_bar {
-  background-color: rgba(0, 0, 0, 0.6);
-  padding-left: 0.5em;
-  padding-right: 0.5em;
-  border-radius: 0.5em;
-  backdrop-filter: blur(8px);
 }
 
 .pokemon_card {
   display: grid;
   grid-template-columns: 100%;
-  grid-template-rows: 13% 1% 43% 50% 50%;
+  grid-template-rows: 13% 1% 35% 45% 38%;
   grid-template-areas:
     "pokemon_name"
     "divider"
@@ -61,28 +38,12 @@ body {
     "pokemon_description";
   align-items: center;
   width: 90%;
-  background-clip: border-box;
-  /* border: 5px solid #ff9900; */
-  box-shadow: 4px 4px 10px rgba(41, 41, 44, 0.7);
-  border-radius: 0.75rem;
   padding: 0.5em;
+  border-radius: 0.75rem;
+  box-shadow: 4px 4px 10px rgba(41, 41, 44, 0.7);
   font-size: 18pt;
   text-shadow: 1px 1px 2px rgb(64, 64, 70);
-}
-
-#left_card {
-  background: linear-gradient(rgba(240, 130, 255, 0.5), rgba(114, 147, 255, 0.5)), url("../img/background_pattern_1.png");
-  color:rgba(255, 0, 0, 0.74);
-}
-
-#middle_card {
-  background: linear-gradient(rgba(251, 255, 0, 0.5), rgba(255, 0, 0, 0.5)), url("../img/background_pattern_2.png");
-  color:rgba(65, 31, 255, 0.74);
-}
-
-#right_card {
-  background: linear-gradient(rgba(89, 0, 255, 0.8), rgba(0, 0, 0, 0.7)), url("../img/background_pattern_3.png");
-  color:rgb(255, 255, 255);
+  justify-self: center;
 }
 
 .text_container {
@@ -164,30 +125,35 @@ body {
   margin-top: 20px;
 }
 
-.purple_background_content {
-  background-color: #6610f2;
-  background-clip: border-box;
-  border-radius: 0.75rem;
-  padding: 0.5em;
-}
+/* Hides the scrollbar - this is the best solution I could come up with */
+::-webkit-scrollbar {
+  width: 0;  
+  background: transparent; 
+} 
 
 #left_card {
   justify-content: center;
   grid-column: 2 / span 1;
   grid-row: 3 / span 1;
   overflow: auto;
+  background: linear-gradient(rgba(240, 130, 255, 0.5), rgba(114, 147, 255, 0.5)), url("../img/background_pattern_1.png");
+  color:rgba(255, 0, 0, 0.74);
 }
 
 #middle_card {
   grid-column: 4 / span 1;
   grid-row: 3 / span 1;
   overflow: auto;
+  background: linear-gradient(rgba(251, 255, 0, 0.5), rgba(255, 0, 0, 0.5)), url("../img/background_pattern_2.png");
+  color:rgba(65, 31, 255, 0.74);
 }
 
 #right_card {
   grid-column: 6 / span 1;
   grid-row: 3 / span 1;
   overflow: auto;
+  background: linear-gradient(rgba(89, 0, 255, 0.8), rgba(0, 0, 0, 0.7)), url("../img/background_pattern_3.png");
+  color:rgb(255, 255, 255);
 }
 
 .hero_image_banner {
@@ -195,69 +161,85 @@ body {
   grid-row: 1 / span 1;
   display: grid;
   grid-template-columns: 30% 70%;
-  grid-template-rows: 40% 20% 40%;
-  background: url("/img/banner-2.jpg") center/cover;
+  grid-template-rows: 100%;
+  align-items: center;
+  /* background: url("../img/background_blue.png"); */
+  background-color: rgb(109, 184, 255);
 }
 
 a {
-  color: white;
+  color: rgb(0, 0, 0);
 }
-
 
 input[type='submit'] {
   font-family: "Press Start 2P";
-  font-size: 0.8em;
+  font-size: 13pt;
+  font-weight: 600;
+  text-shadow: 1px 1px 2px #ffffff;
   background-color: transparent;
-  border: 3px solid #e83e8c;
-  color: #e83e8c;
+  border: 3px solid #000000;
+  box-shadow: 1px 1px 2px #ffffff;
+  color: #000000;
   transform: translate3D(0, 0, 0);
-  transition: color 0.3s, background-color 0.3s, transform 0.15s;
+  transition: color 0.3s, border-color 0.3s, transform 0.15s;
   cursor: pointer;
 }
+
 input[type='submit']:hover {
-  color: white;
-  font-size: 1.2em;
-  background-color: #e83e8c;
+  color: rgb(255, 0, 0);
+  border-color: red;
   outline: none;
 }
-input[type='submit']:focus {
-  color: white;
-  font-size: 1.2em;
-  outline: none;
-}
+
 input[type='submit']:active {
-  color: white;
-  font-size: 1.2em;
-  background-color: #fd7e14;
-  transform: translate3D(0, 5px, 0);
+  transform: translate3D(0, 4px, 0);
   outline: none;
 }
 
 .hero_image_banner #profile_name {
-  font-size: 0.8em;
-  text-shadow: 2 2 5px #6610f2;
+  color: rgb(0, 0, 0);
+  font-family: "Press Start 2P", Arial, Helvetica, sans-serif;
+  font-size: 12pt;
+  font-weight: 600;
+  letter-spacing: 0;
+  text-shadow: 1px 1px 2px #ffffff;
   grid-column: 1 / span 1;
-  grid-row: 2 / span 1;
-  padding-left: 1.50em;
+  grid-row: 1 / span 1;
+  padding-left: 60px;
+  justify-self: center;
 }
 
 .hero_image_banner nav {
-  display: table;
+  display: flex;
+  width: 90%;
+  height: 100%;
   grid-column: 2 / span 1;
-  grid-row: 2 / span 1;
-  background-color: rgba(0,0,0,0.48);
-  box-shadow: 0 0 25px rgba(0,0,0,0.1), 0 5px 10px -3px rgba(0,0,0,0.13);
-  border-radius: 1em;
-  backdrop-filter: blur(6px);
-  padding: 1.2em;
+  grid-row: 1 / span 1;
+  justify-self: right;
+  font-family: 'Press Start 2P', Arial, Helvetica, sans-serif;
+  font-size: 13pt;
+  font-weight: 600;
+  letter-spacing: 0;
+  text-shadow: 1px 1px 2px #ffffff;
 }
 
 .hero_image_banner ul {
-  display: table-row;
+  display: flex;
+  height: 100%;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
 
 .hero_image_banner li {
-  display: table-cell;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
   text-align: center;
 }
 

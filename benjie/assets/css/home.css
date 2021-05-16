@@ -7,6 +7,7 @@ body {
     "footer";
   align-items: center;
   font-family: 'Press Start 2P', Arial, Helvetica, sans-serif;
+  text-shadow: 1px 1px 2px rgb(48, 48, 48);
   margin: 0px;
   padding: 0px;
   height: 100vh;
@@ -17,7 +18,7 @@ body {
 
 #audioPlayer {
   grid-area: audioPlayer;
-  padding-left: 10px;
+  padding-left: 20px;
 }
 
 #errorMsg {
@@ -62,6 +63,7 @@ footer {
   height: 100%;
   align-items: center;
   font-size: 15pt;
+  text-shadow: 1px 1px 2px rgb(48, 48, 48);
 }
 
 #loginForm {
@@ -71,6 +73,8 @@ footer {
 
 #loginForm a {
   color: white;
+  font-size: 11pt;
+  text-shadow: 1px 1px 2px rgb(48, 48, 48);
 }
 
 #loginForm>input {
@@ -89,21 +93,28 @@ footer {
 
 
 #loginForm>input[type="button"] {
+  font-family: 'Press Start 2P', Arial, Helvetica, sans-serif;
+  font-size: 11pt;
+  text-shadow: 1px 1px 2px rgb(48, 48, 48);
   background-color: transparent;
   border: 3px solid #f2f2f8;
+  box-shadow: 1px 1px 2px rgb(48, 48, 48);
   color: #f2f2f8;
   transform: translate3D(0, 0, 0);
   transition: color 0.3s, background-color 0.3s, transform 0.15s;
   cursor: pointer;
 }
+
 #loginForm>input[type="button"]:hover {
   color: #212121;
   background-color: #f2f2f8;
   outline: none;
 }
+
 #loginForm>input[type="button"]:focus {
   outline: none;
 }
+
 #loginForm>input[type="button"]:active {
   transform: translate3D(0, 5px, 0);
   outline: none;
