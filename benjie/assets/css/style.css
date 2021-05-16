@@ -1,80 +1,157 @@
 html, body {
-    background: linear-gradient(rgba(18, 0, 61, 0.3), rgba(56, 22, 0, 0.9)), url(../photos/nyc_bw.png);
+    background: linear-gradient(rgba(255, 255, 255, 0.3), rgb(255, 255, 255, 0.9)), url(/piche/background.jpg);
     background-size: cover;
     height: 100vh;
     overflow: auto;
-    font-family: 'Roboto', 'Arial', 'Helvetica', 'sans-serif';
-    color: rgb(228, 228, 228);
+}
+
+.navbar-brand {
+    font-family: "Leckerli One", Arial, Helvetica, sans-serif;
+}
+
+.nav-link img {
+    height: 35px;
+    width: auto;
+    filter: invert(100%);
+}
+
+.content-container {
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: auto;
+    grid-template-areas: 
+        "profile-pic"
+        "bio"
+        "spotify-button"
+        "song-data";
+    margin-top: 30px;
 }
 
 #profile-pic {
+    display: flex;
     grid-area: profile-pic;
-    width: 25%;
-    border-radius: 50%;
-    border: 5px solid red;
-    border-style: double;
-    justify-self: center;
-    box-shadow: 0 0 20px 2px red;
+    width: 100%;
+    justify-content: center;
 }
 
-.page-title-container {
+.image-cropper {
+    width: 80vw;
+    height: 80vw;
+    max-width: 150px;
+    max-height: 150px;
+    position: relative;
+    overflow: hidden;
+    border: solid rgb(255, 255, 255);
+    border-width: 5px;
+    border-radius: 50%;
+}
+
+.image-cropper img {
+    height: auto;
+    width: 100%;
+}
+
+#bio {
+    display: flex;
+    flex-direction: column;
+    grid-area: bio;
+    width: 60%;
+    justify-self: center;
+    justify-content: center;
+    margin-top: 15px;
+}
+
+.text-container {
     display: flex;
     justify-content: center;
-    grid-area: title;
-    font-size: 40pt;
-    font-weight: 200;
-    letter-spacing: 2px;
-    margin-top: 20px;
+    height: 100%;
 }
 
-#page-title {
+.text-container p {
     display: flex;
     align-items: center;
-    text-shadow: 0 0 10px red;
+    height: 100%;
 }
 
-.newsfeed-items {
-    grid-area: newsfeed;
+#greeting {
+    font-family: "Leckerli One", Arial, Helvetica, sans-serif;
+    font-size: 20pt;
+}
+
+#writeup {
+    text-align: justify;
+    font-family: "Mali", 'Times New Roman', Times, serif;
+    font-weight: 500;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 15px;
+}
+
+#spotify-button {
+    grid-area: spotify-button;
+    width: 20vw;
+    height: 20vw;
+    max-width: 70px;
+    max-height: 70px;
+}
+
+.data-container {
+    grid-area: song-data;
+    /* width: 80%; */
+    /* justify-self: center; */
+}
+
+.songs-1-4, .songs-5-8, .songs-9-12, .songs-13-16, .songs-17-20 {
     display: grid;
+    grid-template-columns: repeat(4, 25%);
+    margin-top: 40px;
+}
+
+.songs-17-20 {
+    margin-bottom: 50px;
+}
+
+.songs-1-4 table, .songs-5-8 table, .songs-9-12 table, .songs-13-16 table, .songs-17-20 table {
+    table-layout: fixed;
+    width: 320px;
+    font-family: "Mali", 'Times New Roman', Times, serif;
+    font-size: 10pt;
+    font-weight: 500;
     justify-self: center;
 }
 
-.newsfeed-item {
-    table-layout: fixed;
-    width: 320px;
-    font-size: 13pt;
-    margin-top: 25px;
-    margin-bottom: 25px;
-}
 
 table img {
-    width: 250px;
+    width: 150px;
     border: 1px solid black;
-    overflow: hide;
-    box-shadow: 5px 5px 20px 0px black;
 }
 
 .thumbnail {
-    width: 300px;
+    width: 160px;
 }
 
 #thumbnail {
     text-align: center;
 }
 
-.text {
-    width: 500px;
+.track-info {
+    width: 160px;
 }
 
-.date {
-    font-size: 11pt;
+@media (max-width: 1280px) {
+    .songs-1-4, .songs-5-8, .songs-9-12, .songs-13-16, .songs-17-20 {
+        grid-template-columns: repeat(2, 50%);
+        row-gap: 40px;
+    }
 }
 
-.page-container {
-    display: grid;
-    grid-template-areas: 
-        "profile-pic"
-        "title"
-        "newsfeed";
-    margin-top: 30px;
+@media (max-width: 640px) {
+    .songs-1-4, .songs-5-8, .songs-9-12, .songs-13-16, .songs-17-20 {
+        grid-template-columns: 100%;
+        row-gap: 40px;
+    }
 }
+
