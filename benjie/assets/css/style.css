@@ -1,0 +1,80 @@
+html, body {
+    background: linear-gradient(rgba(18, 0, 61, 0.3), rgba(56, 22, 0, 0.9)), url(../photos/nyc_bw.png);
+    background-size: cover;
+    height: 100vh;
+    overflow: auto;
+    font-family: 'Roboto', 'Arial', 'Helvetica', 'sans-serif';
+    color: rgb(228, 228, 228);
+}
+
+#profile-pic {
+    grid-area: profile-pic;
+    width: 25%;
+    border-radius: 50%;
+    border: 5px solid red;
+    border-style: double;
+    justify-self: center;
+    box-shadow: 0 0 20px 2px red;
+}
+
+.page-title-container {
+    display: flex;
+    justify-content: center;
+    grid-area: title;
+    font-size: 40pt;
+    font-weight: 200;
+    letter-spacing: 2px;
+    margin-top: 20px;
+}
+
+#page-title {
+    display: flex;
+    align-items: center;
+    text-shadow: 0 0 10px red;
+}
+
+.newsfeed-items {
+    grid-area: newsfeed;
+    display: grid;
+    justify-self: center;
+}
+
+.newsfeed-item {
+    table-layout: fixed;
+    width: 320px;
+    font-size: 13pt;
+    margin-top: 25px;
+    margin-bottom: 25px;
+}
+
+table img {
+    width: 250px;
+    border: 1px solid black;
+    overflow: hide;
+    box-shadow: 5px 5px 20px 0px black;
+}
+
+.thumbnail {
+    width: 300px;
+}
+
+#thumbnail {
+    text-align: center;
+}
+
+.text {
+    width: 500px;
+}
+
+.date {
+    font-size: 11pt;
+}
+
+.page-container {
+    display: grid;
+    grid-template-areas: 
+        "profile-pic"
+        "title"
+        "newsfeed";
+    margin-top: 30px;
+}

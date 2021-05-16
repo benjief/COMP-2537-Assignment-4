@@ -161,19 +161,19 @@ app.get('/profile', function(req, res) {
         $template("#left_placeholder").replaceWith($left("#left_card"));
 
         // insert the middle column from a different file (or could be a DB or ad network, etc.)
-        let middle = fs.readFileSync('./assets/templates/middle_content.html', "utf8");
+        let middle = fs.readFileSync('./assets/templates/middle_card.html', "utf8");
         let middleDOM = new JSDOM(middle);
         let $middle = require("jquery")(middleDOM.window);
         // Replace!
-        $template("#middle_placeholder").replaceWith($middle("#middle_column"));
+        $template("#middle_placeholder").replaceWith($middle("#middle_card"));
 
 
         // insert the right column from a different file (or could be a DB or ad network, etc.)
-        let right = fs.readFileSync('./assets/templates/right_content.html', "utf8");
+        let right = fs.readFileSync('./assets/templates/right_card.html', "utf8");
         let rightDOM = new JSDOM(right);
         let $right = require("jquery")(rightDOM.window);
         // Replace!
-        $template("#right_placeholder").replaceWith($right("#right_column"));
+        $template("#right_placeholder").replaceWith($right("#right_card"));
 
         res.set('Server', 'Wazubi Engine');
         res.set('X-Powered-By', 'Wazubi');
