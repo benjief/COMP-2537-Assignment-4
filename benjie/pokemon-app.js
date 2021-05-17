@@ -3,12 +3,11 @@ const express = require('express');
 const session = require('express-session')
 const app = express();
 const fs = require("fs");
-//const mysql = require('mysql');
+const mysql = require('mysql');
 const { JSDOM } = require('jsdom');
 
 // another potential topic, no time :/
 // https://www.npmjs.com/package/express-brute
-
 
 // static path mappings
 app.use('/js', express.static('assets/js'));
@@ -27,8 +26,6 @@ app.use(session(
         saveUninitialized: true
     }));
 
-
-
 app.get('/', function (req, res) {
     let doc = fs.readFileSync('./assets/html/home.html', "utf8");
 
@@ -39,10 +36,7 @@ app.get('/', function (req, res) {
 
     let dateOptions = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
     let d = new Date().toLocaleDateString("en-US", dateOptions);
-    // where we'll slip in an audio player into the footer's left :)
-    // $("#footer").append('<div id="left"></div>');
     $("#footer").append("<p>Copyright ©2021, Pok&eacute;-App, Inc. Updated: " + d + "</p>");
-
 
     initDB();
 
@@ -51,7 +45,6 @@ app.get('/', function (req, res) {
     res.send(dom.serialize());
 
 });
-
 
 // async together with await
 async function initDB() {
@@ -86,60 +79,6 @@ async function initDB() {
     connection.end();
 }
 
-
-//////////////////////////////////////////////////////////////////////
-// DOESN'T WORK AS WE WANT!!!
-//////////////////////////////////////////////////////////////////////
-function initDBAsyncProblem() {
-
-
-    // Let's build the DB if it doesn't exist
-    const connection = mysql.createConnection({
-        host: 'localhost',
-        user: 'root',
-        password: '',
-        multipleStatements: true
-    });
-
-    const createDBAndTables = `CREATE DATABASE IF NOT EXISTS test;
-        use test;
-        CREATE TABLE IF NOT EXISTS user (
-        ID int NOT NULL AUTO_INCREMENT,
-        email varchar(30),
-        password varchar(30),
-        PRIMARY KEY (ID));`;
-
-
-    connection.connect();
-    connection.query(createDBAndTables, function (error, results, fields) {
-        if (error) {
-            throw error;
-        }
-
-    });
-    let count = 0;
-    connection.query("SELECT COUNT(*) FROM user", function (error, results, fields) {
-        if (error) {
-            throw error;
-        }
-        count = results[0]['COUNT(*)'];
-        console.log("count in the callback is", count);
-    });
-    console.log("count out of the callback is", count);
-    if (count == 0) {
-
-        connection.query("INSERT INTO user (email, password) values ('arron@bcit.ca', 'admin')", function (error, results, fields) {
-            if (error) {
-                throw error;
-            }
-        });
-
-    }
-    connection.end();
-}
-
-
-
 app.get('/profile', function (req, res) {
 
     // check for a session first!
@@ -167,7 +106,6 @@ app.get('/profile', function (req, res) {
         // Replace!
         $template("#middle_placeholder").replaceWith($middle("#middle_card"));
 
-
         // insert the right column from a different file (or could be a DB or ad network, etc.)
         let right = fs.readFileSync('./assets/templates/right_card.html', "utf8");
         let rightDOM = new JSDOM(right);
@@ -184,27 +122,19 @@ app.get('/profile', function (req, res) {
         res.redirect('/');
     }
 
-
 });
-
 
 // No longer need body-parser!
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }))
 
-
 // Notice that this is a 'POST'
 app.post('/authenticate', function (req, res) {
     res.setHeader('Content-Type', 'application/json');
 
-
-    //    console.log("Email", req.body.email);
-    //    console.log("Password", req.body.password);
-
-
     let results = authenticate(req.body.email, req.body.password,
         function (rows) {
-            //console.log(rows.password);
+            // console.log(rows.password);
             if (rows == null) {
                 // not found
                 res.send({ status: "fail", msg: "User account not found." });
@@ -216,7 +146,7 @@ app.post('/authenticate', function (req, res) {
                     // session saved
                 })
                 // this will only work with non-AJAX calls
-                //res.redirect("/profile");
+                // res.redirect("/profile");
                 // have to send a message to the browser and let front-end complete
                 // the action
                 res.send({ status: "success", msg: "Logged in." });
@@ -224,7 +154,6 @@ app.post('/authenticate', function (req, res) {
         });
 
 });
-
 
 function authenticate(email, pwd, callback) {
 
@@ -255,7 +184,6 @@ function authenticate(email, pwd, callback) {
 
 }
 
-
 app.get('/logout', function (req, res) {
     req.session.destroy(function (error) {
         if (error) {
@@ -265,8 +193,7 @@ app.get('/logout', function (req, res) {
     res.redirect("/profile");
 })
 
-
-// RUN SERVER
+// Run Server
 let port = 8000;
 app.listen(port, function () {
     console.log('Listening on port ' + port + '!');

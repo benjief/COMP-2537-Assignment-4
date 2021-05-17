@@ -7,7 +7,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Gotta catch 'em all!" />
 
-  <!-- Generate favicons using: https://favicon.io/ -->
   <link href="/img/favicon.ico" rel="icon" type="image/x-icon" />
   <link href="/css/home.css" rel="stylesheet" />
   <link href="/css/jquery.button-audio-player.css" rel="stylesheet" />
@@ -40,11 +39,7 @@
   <script src="/js/jquery.button-audio-player.js"></script>
   <script>
     $(document).ready(function () {
-      /*
-                Great resource for jQuery plugins, that's where I found the audio player plugin
-                https://www.jqueryscript.net/other/single-button-audio-player.html
-                MIT License
-       */
+
       $('#audioPlayer').buttonAudioPlayer({
         src: '/media/pokemon-theme.mp3',
         type: 'bar-animation',
@@ -58,12 +53,9 @@
           dataType: "JSON",
           data: { email: $("#email").val(), password: $("#password").val() },
           success: function (data) {
-            //console.log("Data returned from server: ", data);
             if (data['status'] == "success") {
-              // redirect
               window.location.replace("/profile");
             } else {
-              // show error message
               $("#errorMsg").html(data['msg']);
             }
 
