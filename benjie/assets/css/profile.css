@@ -314,7 +314,7 @@ input[type='submit']:active {
     grid-column: 1 / span 3;
     grid-row: 1 / span 2;
     display: grid;
-    grid-template-rows: 27% 73%;
+    grid-template-rows: 50% 50%;
     grid-template-columns: 100%;
   }
 
@@ -322,7 +322,6 @@ input[type='submit']:active {
     grid-column: 1 / span 3;
     grid-row: 1 / span 1;
     padding: 0;
-    margin-bottom: 10px;
   }
 
   .hero_image_banner nav {
@@ -338,6 +337,10 @@ input[type='submit']:active {
     display: grid;
     grid-template-columns: 11vw 78vw 11vw;
     grid-template-rows: 5vh 20vh 4vh 85vh 4vh 85vh 4vh 85vh 4vh;
+  }
+
+  .hero_image_banner {
+    grid-template-rows: 23% 77%;
   }
 
   ul {
