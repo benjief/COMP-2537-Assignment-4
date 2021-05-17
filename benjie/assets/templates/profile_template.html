@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>My Pok&eacute;mon</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Yay! Pandemic Over! We can hang out again!" />
+
+  <!-- Generate favicons using: https://favicon.io/ -->
+  <link href="/img/favicon.ico" rel="icon" type="image/x-icon" />
+  <link rel="stylesheet" href="/css/profile.css">
+  <link rel="stylesheet" href="/css/jquery.mCustomScrollbar.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Freckle+Face&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+  <div id="content">
+    <div class="hero_image_banner">
+      <form id="profile_name_container" action="/dashboard" method="get">
+        <input id="profile_name" type="submit" value="Name">
+      </form>
+      <nav>
+        <ul>
+          <li><a href="#">Box 1</a> <span class="badge_text">57</span></li>
+          <li><a href="#">Box 2</a> <span class="badge_text">362</span></li>
+          <li><a href="#">Box 3</a> <span class="badge_text">193</span></li>
+          <li>
+            <form action="/logout" method="get">
+              <input id="logout" type="submit" value="Logout" />
+            </form>
+          </li>
+        </ul>
+      </nav>
+    </div>
+
+    <div id="left_placeholder">LEFT COLUMN PLACEHOLDER</div>
+    <div id="middle_placeholder">MIDDLE COLUMN PLACEHOLDER</div>
+    <div id="right_placeholder">RIGHT COLUMN PLACEHOLDER</div>
+
+  </div>
+  <script src="/js/jquery-3.6.0.min.js"></script>
+
+</body>
+
+</html>

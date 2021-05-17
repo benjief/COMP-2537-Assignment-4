@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Pok&eacute;-App</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Gotta catch 'em all!" />
+
+  <link href="/img/favicon.ico" rel="icon" type="image/x-icon" />
+  <link href="/css/home.css" rel="stylesheet" />
+  <link href="/css/jquery.button-audio-player.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <div id="audioPlayer"></div>
+  <div id="formPanel">
+    <form id='loginForm'>
+      <div class="titleContainer">
+        <p id="formTitle">Welcome!</p>
+        <img src="img/pokeball.png">
+      </div>
+      <input id='email' type='email' required="required" placeholder="Email" />
+      <input id='password' type='password' required="required" placeholder="Password" />
+      <input type="button" value="Login" id="submit" />
+      <p><span id="serverMsg"></span></p>
+      <p id="forgotP"><a href="#">Forgot Login?</a></p>
+      <p id="notMemberP"><a href="#">Get Membership</a></p>
+      <p id="errorMsg">&nbsp;</p>
+      <div id="team19">
+        <ul>
+          <li>Team 19</li><br />
+          <li>Benjie Friedman • (A01248859)</li>
+          <li>Samuel Tjahadi • (A00978466)</li>
+          <li>Giwoun Bae • (A01243484) </li>
+          <li>Gyephel Tenzin • (A01178786)</li>
+        </ul>
+      </div>
+    </form>
+  </div>
+
+
+  <footer id="footer">
+  </footer>
+
+  <script>"use strict"</script>
+  <script src="/js/jquery-3.6.0.min.js"></script>
+  <script src="/js/jquery.button-audio-player.js"></script>
+  <script>
+    $(document).ready(function () {
+
+      $('#audioPlayer').buttonAudioPlayer({
+        src: '/media/pokemon-theme.mp3',
+        type: 'bar-animation',
+        loop: true
+      });
+
+      $("#submit").click(function () {
+        $.ajax({
+          url: "/authenticate",
+          type: "POST",
+          dataType: "JSON",
+          data: { email: $("#email").val(), password: $("#password").val() },
+          success: function (data) {
+            if (data['status'] == "success") {
+              window.location.replace("/profile");
+            } else {
+              $("#errorMsg").html(data['msg']);
+            }
+
+          },
+          error: function (jqXHR, textStatus, errorThrown) {
+            $("body").text(jqXHR.statusText);
+          }
+        });
+
+      });
+
+    });
+
+  </script>
+</body>
+
+</html>
