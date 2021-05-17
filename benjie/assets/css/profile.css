@@ -289,6 +289,12 @@ a {
   text-align: center;
 }
 
+@media (max-width: 1520px) {
+
+  .pokemon_card {
+    grid-template-rows: 55px 30px 230px 70px 200px 300px;
+  }
+
 @media (max-width: 1310px) {
     #content {
       display: grid;
