@@ -1,157 +1,212 @@
-html, body {
-    background: linear-gradient(rgba(255, 255, 255, 0.3), rgb(255, 255, 255, 0.9)), url(/piche/background.jpg);
-    background-size: cover;
-    height: 100vh;
-    overflow: auto;
+body {
+    font-family: 'Mali', Arial, Helvetica, sans-serif;
+    text-align: center;
+    color: rgb(182, 174, 174);
 }
 
-.navbar-brand {
-    font-family: "Leckerli One", Arial, Helvetica, sans-serif;
+/* Nav bar styling */
+.navbar-dark .navbar-brand {
+    font-family: 'Press Start 2P', Arial, Helvetica, sans-serif;
+    font-size: 13pt;
 }
 
-.nav-link img {
-    height: 35px;
-    width: auto;
-    filter: invert(100%);
+.navbar {
+    background-color: #a4d1a7;
 }
 
-.content-container {
+.navbar-brand.abs:hover {
+    color: rgb(255, 231, 248);
+}
+
+.navbar-brand.abs:active {
+    color: rgb(255, 185, 249);
+}
+
+.content {
     display: grid;
-    grid-template-columns: 100%;
-    grid-template-rows: auto;
-    grid-template-areas: 
-        "profile-pic"
-        "bio"
-        "spotify-button"
-        "song-data";
-    margin-top: 30px;
+    grid-template-areas: "add-user""current-users""update";
 }
 
-#profile-pic {
-    display: flex;
-    grid-area: profile-pic;
-    width: 100%;
-    justify-content: center;
-}
-
-.image-cropper {
-    width: 80vw;
-    height: 80vw;
-    max-width: 150px;
-    max-height: 150px;
-    position: relative;
-    overflow: hidden;
-    border: solid rgb(255, 255, 255);
-    border-width: 5px;
-    border-radius: 50%;
-}
-
-.image-cropper img {
-    height: auto;
-    width: 100%;
-}
-
-#bio {
-    display: flex;
-    flex-direction: column;
-    grid-area: bio;
-    width: 60%;
-    justify-self: center;
-    justify-content: center;
-    margin-top: 15px;
-}
-
-.text-container {
+.form-container {
     display: flex;
     justify-content: center;
-    height: 100%;
+    grid-area: add-user;
 }
 
-.text-container p {
-    display: flex;
-    align-items: center;
-    height: 100%;
+form {
+    width: 80%;
+    padding: 2em;
+    margin-top: 50px;
+    font-size: 12pt;
+    border: solid 2px #cab69c;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    transition: 0.3s;
 }
 
-#greeting {
-    font-family: "Leckerli One", Arial, Helvetica, sans-serif;
-    font-size: 20pt;
+form:hover {
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.4);
 }
 
-#writeup {
-    text-align: justify;
-    font-family: "Mali", 'Times New Roman', Times, serif;
-    font-weight: 500;
+legend {
+    font-size: 12pt;
+    font-weight: 600;
 }
 
 .button-container {
     display: flex;
+}
+
+input {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    width: 100px;
+}
+
+#submit,
+#delete-all {
+    width: 100px;
+}
+
+#submit {
+    margin-left: auto;
+    margin-right: 3px;
+}
+
+#delete-all {
+    margin-right: auto;
+    margin-left: 3px;
+}
+
+#delete-all {
+    color: red;
+}
+
+#delete-all:hover {
+    background-color: rgb(255, 199, 241);
+    box-shadow: 0 8px 16px 0 rgb(255, 199, 241);
+    color: white;
+    font-weight: bolder;
+}
+
+#delete-all:active {
+    background-color: rgb(124, 39, 39);
+}
+
+#submit:hover {
+    background-color: #a4d1a7;
+    box-shadow: 0 8px 16px 0 #a4d1a7;
+    color: rgb(255, 255, 255);
+    font-weight: bolder;
+}
+
+#submit:active {
+    background-color: rgb(12, 100, 16);
+}
+
+.table-container {
+    display: flex;
     justify-content: center;
-    margin-top: 15px;
-}
-
-#spotify-button {
-    grid-area: spotify-button;
-    width: 20vw;
-    height: 20vw;
-    max-width: 70px;
-    max-height: 70px;
-}
-
-.data-container {
-    grid-area: song-data;
-    /* width: 80%; */
-    /* justify-self: center; */
-}
-
-.songs-1-4, .songs-5-8, .songs-9-12, .songs-13-16, .songs-17-20 {
-    display: grid;
-    grid-template-columns: repeat(4, 25%);
-    margin-top: 40px;
-}
-
-.songs-17-20 {
-    margin-bottom: 50px;
-}
-
-.songs-1-4 table, .songs-5-8 table, .songs-9-12 table, .songs-13-16 table, .songs-17-20 table {
-    table-layout: fixed;
-    width: 320px;
-    font-family: "Mali", 'Times New Roman', Times, serif;
-    font-size: 10pt;
-    font-weight: 500;
+    margin-top: 50px;
+    width: 50%;
     justify-self: center;
+    grid-area: current-users;
 }
 
-
-table img {
-    width: 150px;
-    border: 1px solid black;
+table {
+    width: 100%;
+    position: relative;
+    top: -0.5px;
 }
 
-.thumbnail {
-    width: 160px;
+table th:first-child {
+    border-top-left-radius: 10px;
 }
 
-#thumbnail {
+table th:last-child {
+    border-top-right-radius: 10px;
+}
+
+table tr:last-child td:first-child {
+    border-bottom-left-radius: 10px;
+}
+
+table tr:last-child td:last-child {
+    border-bottom-right-radius: 10px;
+}
+
+th,
+td {
+    padding: 4px;
+    padding-left: 15px;
+    padding-right: 15px;
     text-align: center;
 }
 
-.track-info {
-    width: 160px;
+th {
+    background-color: #cab69c;
 }
 
-@media (max-width: 1280px) {
-    .songs-1-4, .songs-5-8, .songs-9-12, .songs-13-16, .songs-17-20 {
-        grid-template-columns: repeat(2, 50%);
-        row-gap: 40px;
+tr:nth-child(odd) {
+    background-color: #cab69c;
+    color: white;
+}
+
+.text-container {
+    display: flex;
+    grid-area: update;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    justify-content: center;
+    font-weight: 600;
+    color: rgb(0, 155, 0);
+}
+
+#status {
+    display: flex;
+    height: 100%;
+    align-items: center;
+}
+
+a {
+    text-decoration: none;
+    color: red;
+}
+
+.footer-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+footer {
+    display: inline flex;
+    background: #a4d1cf;
+    font-size: 12pt;
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    border-radius: 10px;
+    color: white;
+    filter: drop-shadow(0px 10px 4px #b9b8b8);
+}
+
+h2 {
+    font-size: 12pt;
+}
+
+.list {
+    padding: 20px;
+}
+
+/* We can change the media query width later */
+@media (min-width: 768px) {
+    .navbar-brand.abs
+        {
+            position: absolute;
+            width: 100%;
+            left: 0;
+            text-align: center;
+        }
     }
-}
-
-@media (max-width: 640px) {
-    .songs-1-4, .songs-5-8, .songs-9-12, .songs-13-16, .songs-17-20 {
-        grid-template-columns: 100%;
-        row-gap: 40px;
-    }
-}
-
