@@ -90,7 +90,7 @@ app.get('/profile', function (req, res) {
         let $template = require("jquery")(templateDOM.window);
 
         // put the name in
-        $template("#profile_name").html(req.session.email);
+        $template("#profile_name").attr("value", req.session.email);
 
         // insert the left column from a different file (or could be a DB or ad network, etc.)
         let left = fs.readFileSync('./assets/templates/left_card.html', "utf8");
@@ -183,6 +183,15 @@ function authenticate(email, pwd, callback) {
         });
 
 }
+
+app.get('/dashboard', function (req, res) {
+    req.session.destroy(function (error) {
+        if (error) {
+            console.log(error);
+        }
+    });
+    res.redirect("/");
+})
 
 app.get('/logout', function (req, res) {
     req.session.destroy(function (error) {

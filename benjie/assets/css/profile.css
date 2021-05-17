@@ -201,7 +201,6 @@ body {
   grid-template-rows: 100%;
   align-items: center;
   background: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), url("../img/background_clouds.png");
-  /* background-color: rgb(109, 184, 255); */
 }
 
 a {
@@ -209,29 +208,29 @@ a {
   text-decoration: none;
 }
 
-input[type='submit'] {
+#logout {
   font-family: "Press Start 2P";
   font-size: 13pt;
   font-weight: 600;
   text-shadow: 1px 1px 2px #ffffff;
   background-color: transparent;
   border: 3px solid #000000;
+  border-radius: 5px;
   box-shadow: 1px 1px 2px #ffffff;
   color: #000000;
   transform: translate3D(0, 0, 0);
   transition: color 0.3s, border-color 0.3s, transform 0.15s;
   cursor: pointer;
+  padding: 5px;
 }
 
-input[type='submit']:hover {
+#logout:hover {
   color: rgb(255, 0, 0);
   border-color: red;
-  outline: none;
 }
 
-input[type='submit']:active {
+#logout:active {
   transform: translate3D(0, 4px, 0);
-  outline: none;
 }
 
 .hero_image_banner #profile_name {
@@ -245,6 +244,15 @@ input[type='submit']:active {
   grid-row: 1 / span 1;
   padding-left: 60px;
   justify-self: center;
+  border: none;
+  background: transparent;
+  transform: translate3D(0, 0, 0);
+  transition: transform 0.15s;
+  cursor: pointer;
+}
+
+.hero_image_banner #profile_name:active {
+  transform: translate3D(0, 4px, 0);
 }
 
 .hero_image_banner nav {
@@ -316,6 +324,11 @@ input[type='submit']:active {
     display: grid;
     grid-template-rows: 50% 50%;
     grid-template-columns: 100%;
+  }
+
+  #profile_name_container {
+    display: flex;
+    justify-content: center;
   }
 
   .hero_image_banner #profile_name {
@@ -414,7 +427,7 @@ input[type='submit']:active {
     font-size: 11pt;
   }
 
-  input[type='submit'] {
+  #logout {
     font-size: 11pt;
   }
 }

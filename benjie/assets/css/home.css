@@ -106,18 +106,12 @@ footer {
 }
 
 #loginForm>input[type="button"]:hover {
-  color: #212121;
-  background-color: #f2f2f8;
-  outline: none;
-}
-
-#loginForm>input[type="button"]:focus {
-  outline: none;
+  color: #fffb00;
+  border-color: #fffb00;;
 }
 
 #loginForm>input[type="button"]:active {
-  transform: translate3D(0, 5px, 0);
-  outline: none;
+  transform: translate3D(0, 4px, 0);
 }
 
 #loginForm>p {

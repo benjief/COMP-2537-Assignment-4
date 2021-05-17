@@ -19,7 +19,9 @@
 
   <div id="content">
     <div class="hero_image_banner">
-      <div id="profile_name">NAME</div>
+      <form id="profile_name_container" action="/dashboard" method="get">
+        <input id="profile_name" type="submit" value="Name">
+      </form>
       <nav>
         <ul>
           <li><a href="#">Box 1</a> <span class="badge_text">57</span></li>
@@ -27,34 +29,20 @@
           <li><a href="#">Box 3</a> <span class="badge_text">193</span></li>
           <li>
             <form action="/logout" method="get">
-              <input type="submit" value="Logout" />
+              <input id="logout" type="submit" value="Logout" />
             </form>
           </li>
         </ul>
       </nav>
     </div>
 
-
-
-
     <div id="left_placeholder">LEFT COLUMN PLACEHOLDER</div>
     <div id="middle_placeholder">MIDDLE COLUMN PLACEHOLDER</div>
     <div id="right_placeholder">RIGHT COLUMN PLACEHOLDER</div>
 
-
-
   </div>
   <script src="/js/jquery-3.6.0.min.js"></script>
-  <script src="/js/jquery.mCustomScrollbar.concat.min.js"></script>
-  <script>
-    $(document).ready(function () {
-      // $("#left_card").mCustomScrollbar();
-      // $("#middle_card").mCustomScrollbar();
-      // $("#right_card").mCustomScrollbar();
 
-
-    });
-  </script>
 </body>
 
 </html>
