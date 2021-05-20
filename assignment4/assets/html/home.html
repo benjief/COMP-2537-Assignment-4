@@ -65,7 +65,7 @@
           data: { email: $("#email").val(), password: $("#password").val() },
           success: function (data) {
             if (data['status'] == "success") {
-              window.location.replace("/chatting");
+              window.location.replace("/chatroom");
             } else {
               $("#errorMsg").html(data['msg']);
             }

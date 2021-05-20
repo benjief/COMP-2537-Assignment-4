@@ -5,7 +5,8 @@ $(document).ready(function() {
      And if the browser supports this, we get a new connection as wellat:
      ws://localhost:8000
    */
-  let socket = io.connect('/');
+//   let socket = io.connect('/');
+    let socket = io("ws://localhost:8000");
 
   socket.on('user_joined', function(data) {
       let beginTag = "<p style='color: bisque;'>";

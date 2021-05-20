@@ -5,7 +5,7 @@ const app = express();
 const fs = require("fs");
 const mysql = require('mysql');
 const { JSDOM } = require('jsdom');
-const server = require('http').createServer();
+const server = require('http').createServer(app);
 const io = require('socket.io')(server);
 
 
@@ -87,13 +87,13 @@ async function initDB() {
     connection.end();
 }
 
-app.get('/chatting', function (req, res) {
+app.get('/chatroom', function (req, res) {
 
     // check for a session first!
     if (req.session.loggedIn) {
 
         // DIY templating with DOM, this is only the husk of the page
-        let templateFile = fs.readFileSync('./assets/html/chatting.html', "utf8");
+        let templateFile = fs.readFileSync('./assets/html/chatroom.html', "utf8");
         let templateDOM = new JSDOM(templateFile);
         let $template = require("jquery")(templateDOM.window);
 
@@ -108,36 +108,6 @@ app.get('/chatting', function (req, res) {
         // not logged in - no session!
         res.redirect('/');
     }
-
-});
-
-var userCount = 0;
-
-io.on('connection', function(socket) {
-    userCount++;
-    let str = "anonymous";
-    socket.userName = str;
-    io.emit('user_joined', { user: socket.userName, numOfUsers: userCount });
-    console.log('Connected users:', userCount);
-
-    socket.on('disconnect', function(data) {
-        userCount--;
-        io.emit('user_left', { user: socket.userName, numOfUsers: userCount });
-
-        console.log('Connected users:', userCount);
-    });
-
-    socket.on('chatting', function(data) {
-
-        console.log('User', data.name, 'Message', data.message);
-        if(socket.userName == "anonymous") {
-            io.emit("chatting", {user: data.name, text: data.message,
-                event: socket.userName + " is now known as " + data.name});
-            socket.userName = data.name;
-        } else {
-            io.emit("chatting", {user: socket.userName, text: data.message});
-        }
-    });
 });
 
 // No longer need body-parser!
@@ -211,11 +181,54 @@ app.get('/logout', function (req, res) {
             console.log(error);
         }
     });
-    res.redirect("/chatting");
+    res.redirect("/");
 })
+
+
+var userCount = 0;
+
+io.on('connect', function(socket) {
+    userCount++;
+    let str = "anonymous";
+    socket.userName = str;
+    io.emit('user_joined', { user: socket.userName, numOfUsers: userCount });
+    console.log('Connected users:', userCount);
+
+    socket.on('disconnect', function(data) {
+        userCount--;
+        io.emit('user_left', { user: socket.userName, numOfUsers: userCount });
+
+        console.log('Connected users:', userCount);
+    });
+
+    socket.on('chatting', function(data) {
+
+        console.log('User', data.name, 'Message', data.message);
+
+        // if you don't want to send to the sender
+        //socket.broadcast.emit({user: data.name, text: data.message});
+
+        if(socket.userName == "anonymous") {
+
+
+            io.emit("chatting", {user: data.name, text: data.message,
+                event: socket.userName + " is now known as " + data.name});
+            socket.userName = data.name;
+
+        } else {
+
+            io.emit("chatting", {user: socket.userName, text: data.message});
+
+        }
+
+
+    });
+
+});
+
 
 // Run Server
 let port = 8000;
-app.listen(port, function () {
+server.listen(port, function () {
     console.log('Listening on port ' + port + '!');
 })
