@@ -100,6 +100,7 @@ app.get('/profile', function (req, res) {
 
         // put the name in
         $template("#profile_name").attr("value", req.session.email);
+        $template("#greeting").html("Welcome!&nbsp<span id='#username'>" + req.session.email + '</span>');
 
         // insert the left column from a different file (or could be a DB or ad network, etc.)
         let left = fs.readFileSync('./assets/templates/left_card.html', "utf8");
@@ -134,7 +135,26 @@ app.get('/profile', function (req, res) {
 });
 
 
-app.get('/')
+app.get('/chat', function (req, res) {
+
+    // check for a session first!
+    if (req.session.loggedIn) {
+
+        // put the name in
+        $template("#profile_name").attr("value", req.session.email);
+        $template("#greeting").html("Welcome!&nbsp<span id='#username'>" + req.session.email + '</span>');
+
+        res.set('Server', 'Wazubi Engine');
+        res.set('X-Powered-By', 'Wazubi');
+        res.send(templateDOM.serialize());
+
+    } else {
+        // not logged in - no session!
+        res.redirect('/');
+    }
+
+});
+
 
 // No longer need body-parser!
 app.use(express.json());
@@ -212,6 +232,8 @@ app.get('/logout', function (req, res) {
     res.redirect("/");
 })
 
+
+app.get("/chat", )
 
 var userCount = 0;
 

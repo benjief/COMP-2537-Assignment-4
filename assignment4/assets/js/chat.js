@@ -16,7 +16,6 @@ socket.on('user_joined', function(data) {
         $("#chat_content").append("<p>Just you, no one else.</p>");
 
     } else {
-
         $("#chat_content").append(beginTag + data.user
             + " connected. There are " + numOfUsers + " " + userStr + ".</p>");
 
@@ -50,7 +49,7 @@ socket.on('user_left', function(data) {
 // this is from others - not our text
 socket.on('chatting', function(data) {
     //console.log(data);
-    let me = $("#name").val();
+    let me = $("#username").val();
     let beginTag = "<p>";
     if(me == data.user) {
         beginTag = "<p style='color: darkblue;'>";
@@ -65,14 +64,14 @@ socket.on('chatting', function(data) {
 
 $("#send").on('click', function() {
 
-    let name = $("#name").val();
+    let name = $("#username").val();
     let text = $("#msg").val();
 
     // check if the name is blank, shouldn't be
-    if(name == null || name === "") {
-        $("#name").fadeOut(50).fadeIn(50).fadeOut(50).fadeIn(50);
-        return;
-    }
+    // if(name == null || name === "") {
+    //     $("#name").fadeOut(50).fadeIn(50).fadeOut(50).fadeIn(50);
+    //     return;
+    // }
     if(text == null || text === "") {
         $("#msg").fadeOut(50).fadeIn(50).fadeOut(50).fadeIn(50);
         return;
@@ -80,7 +79,3 @@ $("#send").on('click', function() {
     socket.emit('chatting', {"name": name, message: text});
     $("#msg").val("");
 });
-
-$("#chat_btn").on("click", function () {
-    
-  });

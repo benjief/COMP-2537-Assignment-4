@@ -41,6 +41,10 @@ body {
   height: max-content;
 }
 
+#username {
+  color: lightblue;
+}
+
 #msg {
   width: 100%;
 }
@@ -49,7 +53,7 @@ body {
   width: 100%;
   height:max-content;
   max-height: 50%;
-  /* background-color: darkgrey; */
+  color: gray;
 }
 
 .badge_text {
