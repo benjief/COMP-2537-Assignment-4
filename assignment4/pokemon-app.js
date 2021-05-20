@@ -1,3 +1,4 @@
+'use strict'
 // Requires
 const express = require('express');
 const session = require('express-session')
@@ -87,18 +88,39 @@ async function initDB() {
     connection.end();
 }
 
-app.get('/chatroom', function (req, res) {
+app.get('/profile', function (req, res) {
 
     // check for a session first!
     if (req.session.loggedIn) {
 
         // DIY templating with DOM, this is only the husk of the page
-        let templateFile = fs.readFileSync('./assets/html/chatroom.html', "utf8");
+        let templateFile = fs.readFileSync('./assets/templates/profile_template.html', "utf8");
         let templateDOM = new JSDOM(templateFile);
         let $template = require("jquery")(templateDOM.window);
 
         // put the name in
         $template("#profile_name").attr("value", req.session.email);
+
+        // insert the left column from a different file (or could be a DB or ad network, etc.)
+        let left = fs.readFileSync('./assets/templates/left_card.html', "utf8");
+        let leftDOM = new JSDOM(left);
+        let $left = require("jquery")(leftDOM.window);
+        // Replace!
+        $template("#left_placeholder").replaceWith($left("#left_card"));
+
+        // insert the middle column from a different file (or could be a DB or ad network, etc.)
+        let middle = fs.readFileSync('./assets/templates/middle_card.html', "utf8");
+        let middleDOM = new JSDOM(middle);
+        let $middle = require("jquery")(middleDOM.window);
+        // Replace!
+        $template("#middle_placeholder").replaceWith($middle("#middle_card"));
+
+        // insert the right column from a different file (or could be a DB or ad network, etc.)
+        let right = fs.readFileSync('./assets/templates/right_card.html', "utf8");
+        let rightDOM = new JSDOM(right);
+        let $right = require("jquery")(rightDOM.window);
+        // Replace!
+        $template("#right_placeholder").replaceWith($right("#right_card"));
 
         res.set('Server', 'Wazubi Engine');
         res.set('X-Powered-By', 'Wazubi');
@@ -108,7 +130,11 @@ app.get('/chatroom', function (req, res) {
         // not logged in - no session!
         res.redirect('/');
     }
+
 });
+
+
+app.get('/')
 
 // No longer need body-parser!
 app.use(express.json());
@@ -175,6 +201,8 @@ app.get('/dashboard', function (req, res) {
     res.redirect("/");
 })
 
+
+
 app.get('/logout', function (req, res) {
     req.session.destroy(function (error) {
         if (error) {
@@ -205,11 +233,7 @@ io.on('connect', function(socket) {
 
         console.log('User', data.name, 'Message', data.message);
 
-        // if you don't want to send to the sender
-        //socket.broadcast.emit({user: data.name, text: data.message});
-
         if(socket.userName == "anonymous") {
-
 
             io.emit("chatting", {user: data.name, text: data.message,
                 event: socket.userName + " is now known as " + data.name});
