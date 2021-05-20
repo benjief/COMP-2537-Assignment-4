@@ -1,96 +1,5 @@
-      #chatroom-content {
-        grid-area: message;
-        height: 100%;
-        margin: 0 auto;
-        width: 90%;
-      }
-
-      #chat_content {
-        grid-area: chat;
-        padding: 1em;
-        background-color: rgba(255, 255, 255, 0.654);
-        margin: 0 auto;
-        width: 70%;
-        height: max-content;
-        max-height: 25%;
-        text-align: center;
-      }
-
-      #chat_form {
-        color: white;
-        text-align: center;
-      }
-
-      #chat_form a {
-        color: #fd7e14;
-      }
-
-      #chat_form>input {
-        font-size: 1.1em;
-        margin-top: 0.5em;
-        outline: none;
-        border: none;
-        text-align: center;
-        color: #212121;
-        padding: 0.4em;
-        background-color: rgba(255, 255, 255, 0.7);
-        border-radius: 6px;
-      }
-
-      #send {
-        margin-bottom: 2em;
-      }
-
-      #msg {
-        height: 8em;
-        width: 80%;
-        font-size: 1.5em;
-        display: block;
-        margin: 0 auto;
-        margin-top: 1em;
-        outline: none;
-        border: none;
-        text-align: left;
-        color: #212121;
-        padding: 0.4em;
-        background-color: rgba(255, 255, 255, 0.7);
-        border-radius: 6px;
-      }
-
-      #chat_form>input[type="button"] {
-        background-color: rgba(245, 245, 245, 0.585);
-        border: 3px solid #f2f2f8;
-        color: #f2f2f8;
-        transform: translate3D(0, 0, 0);
-        transition: color 0.3s, background-color 0.3s, transform 0.15s;
-        cursor: pointer;
-      }
-
-      #chat_form>input[type="button"]:hover {
-        color: #212121;
-        background-color: #f2f2f8;
-        outline: none;
-      }
-
-      #chat_form>input[type="button"]:focus {
-        outline: none;
-        font: green;
-      }
-
-      #chat_form>input[type="button"]:active {
-        transform: translate3D(0, 5px, 0);
-        outline: none;
-      }
-
-      #chat_content {
-        font-family: 'Courier Prime';
-        font-size: 1.2em;
-        color: white;
-      }
-
-
-
-
+@import url(https://fonts.googleapis.com/css?family=Hind);
+@import url('https://fonts.googleapis.com/css2?family=Courier+Prime:ital@1&display=swap');
 
 body {
   font-family: 'Freckle Face', Arial, Helvetica, sans-serif;
@@ -142,10 +51,90 @@ body {
   justify-self: center;
   height: max-content;
 }
+
 #chat_description {
   display: flex;
   justify-content: center;
 }
+
+#chatroom-content {
+  display: flex;
+  height: 100%;
+  margin: 0 auto;
+  width: 90%;
+}
+
+#chat_form {
+  color: white;
+  text-align: center;
+}
+
+#chat_form a {
+  color: #fd7e14;
+}
+
+#chat_form>input {
+  font-size: 1.1em;
+  margin-top: 0.5em;
+  outline: none;
+  border: none;
+  text-align: center;
+  color: #212121;
+  padding: 0.4em;
+  background-color: rgba(255, 255, 255, 0.7);
+  border-radius: 6px;
+}
+
+#send {
+  margin-bottom: 2px;
+  width: 90%;
+}
+
+#name {
+  width: 70%;
+}
+
+#msg {
+  height: 8em;
+  width: 80%;
+  font-size: 1.5em;
+  display: block;
+  margin: 0 auto;
+  margin-top: 10px;
+  outline: none;
+  border: none;
+  text-align: left;
+  color: #212121;
+  padding: 0.4em;
+  background-color: rgba(255, 255, 255, 0.7);
+  border-radius: 6px;
+}
+
+#chat_form>input[type="button"] {
+  background-color: rgba(245, 245, 245, 0.585);
+  border: 3px solid #f2f2f8;
+  color: #f2f2f8;
+  transform: translate3D(0, 0, 0);
+  transition: color 0.3s, background-color 0.3s, transform 0.15s;
+  cursor: pointer;
+}
+
+#chat_form>input[type="button"]:hover {
+  color: #212121;
+  background-color: #f2f2f8;
+  outline: none;
+}
+
+#chat_form>input[type="button"]:focus {
+  outline: none;
+  font: green;
+}
+
+#chat_form>input[type="button"]:active {
+  transform: translate3D(0, 5px, 0);
+  outline: none;
+}
+
 
 .text_container {
   display: flex;
@@ -176,68 +165,6 @@ body {
   letter-spacing: 5px;
 }
 
-.divider {
-  grid-area: divider;
-  border-radius: 5px;
-  height: 0px;
-  width: 88%;
-  justify-self: center;
-  box-shadow: 2px 2px 2px rgb(126, 126, 133);
-}
-
-.pokemon_stats {
-  display: flex;
-  flex-direction: column;
-  margin-left: 25px;
-  margin-top: 20px;
-  grid-area: pokemon_stats;
-  height: 100%;
-  font-size: 17pt;
-}
-
-.pokemon_stats p {
-  margin: 0;
-  margin-bottom: 20px;
-}
-
-.add_to_box_container {
-  display: flex;
-  justify-content: center;
-  width: 150px;
-  border: 3px solid black;
-  border-radius: 10px;
-  background-color: white;
-  justify-self: center;
-  transform: translate3D(0, 0, 0);
-  transition: color 0.3s, border-color 0.3s, transform 0.15s;
-  cursor: pointer;
-  grid-area: add_to_box;
-}
-
-.add_to_box_container a {
-  transform: translate3D(0, 0, 0);
-  transition: color 0.3s, transform 0.15s;
-  cursor: pointer;
-}
-
-.add_to_box_container a:hover {
-  color: red;
-}
-
-.add_to_box_container:hover {
-  border-color: red;
-}
-
-.add_to_box_container:active {
-  transform: translate3D(0, 4px, 0);
-  outline: none;
-}
-
-.pokemon_sprite {
-  grid-area: pokemon_sprite;
-  max-width: 200px;
-  justify-self: center;
-}
 
 /* Hides the scrollbar - this is the best solution I could come up with */
 ::-webkit-scrollbar {
@@ -251,6 +178,20 @@ body {
   overflow: auto;
   background: linear-gradient(rgba(251, 255, 0, 0.5), rgba(255, 0, 0, 0.5)), url("../img/background_pattern_2.png");
   color:rgba(65, 31, 255, 0.74);
+}
+
+#chat_content {
+  padding: 1em;
+  background-color: rgb(234, 220, 196);
+  margin: 10px auto;
+  width: 70%;
+  height: max-content;
+  text-align: center;
+  border-radius: 10px;
+  border: green solid;
+  font-family: 'Courier Prime';
+  font-size: 1.2em;
+  color: rgb(0, 128, 73);
 }
 
 .hero_image_banner {
@@ -380,9 +321,16 @@ a {
     grid-row: 2 / span 1;
     justify-self: center;
   }
+
+
+
 }
 
 @media (max-width: 560px) {
+
+  #chatroom-content {
+    flex-direction: column;
+  } 
 
   .hero_image_banner {
     height: 80%;

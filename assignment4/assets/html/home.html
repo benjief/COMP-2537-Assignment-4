@@ -47,37 +47,6 @@
   <script>"use strict"</script>
   <script src="/js/jquery-3.6.0.min.js"></script>
   <script src="/js/jquery.button-audio-player.js"></script>
-  <script>
-    'use strict'
-    $(document).ready(function () {
-
-      $('#audioPlayer').buttonAudioPlayer({
-        src: '/media/pokemon-theme.mp3',
-        type: 'bar-animation',
-        loop: true
-      });
-
-      $("#submit").click(function () {
-        $.ajax({
-          url: "/authenticate",
-          type: "POST",
-          dataType: "JSON",
-          data: { email: $("#email").val(), password: $("#password").val() },
-          success: function (data) {
-            if (data['status'] == "success") {
-              window.location.replace("/chatroom");
-            } else {
-              $("#errorMsg").html(data['msg']);
-            }
-
-          },
-          error: function (jqXHR, textStatus, errorThrown) {
-            $("body").text(jqXHR.statusText);
-          }
-        });
-      });
-    });
-  </script>
 </body>
 
 </html>
