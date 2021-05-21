@@ -9,6 +9,11 @@ const { JSDOM } = require('jsdom');
 const server = require('http').createServer(app);
 const io = require('socket.io')(server);
 
+const morgan = require('morgan');
+const path = require('path');
+const rfs = require('rotating-file-stream');
+
+
 
 // another potential topic, no time :/
 // https://www.npmjs.com/package/express-brute
@@ -20,7 +25,17 @@ app.use('/img', express.static('assets/imgs'));
 app.use('/fonts', express.static('assets/fonts'));
 app.use('/html', express.static('assets/html'));
 app.use('/media', express.static('assets/media'));
+app.use('/media', express.static('assets/media'));
 
+
+//logging
+const accessLogStream = rfs.createStream('access.log', {
+    interval: '1d', // rotate daily
+    path: path.join(__dirname, 'assets/log')
+});
+
+app.use(morgan(':referrer :url :user-agent',
+    { stream: accessLogStream }));
 
 app.use(session(
     {
