@@ -163,16 +163,13 @@ footer p {
 @import url(https://fonts.googleapis.com/css?family=Hind);
       @import url('https://fonts.googleapis.com/css2?family=Courier+Prime:ital@1&display=swap');
 
-      body {
-        font-family: 'Hind', sans-serif;
-      }
+      
       #content, #chat_content {
         padding: 1em;
         background-color: cornflowerblue;
         margin: 0 auto;
         width: 80%;
       }
-
 
       #chat_form {
         color: white;
@@ -185,8 +182,6 @@ footer p {
 
       #chat_form > input {
         font-size: 1.1em;
-/*        display: block;*/
-/*        margin: 0 auto;*/
         margin-top: 1em;
         margin-right: 1em;
         outline: none;
@@ -233,12 +228,6 @@ footer p {
       #chat_form > input[type="button"]:active {
         transform: translate3D(0, 5px, 0);
         outline: none;
-      }
-
-      #footer {
-        margin: 0 auto;
-        color: white;
-        background-color: cornflowerblue;
       }
 
       #chat_content {
