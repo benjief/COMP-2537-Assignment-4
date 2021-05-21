@@ -99,7 +99,6 @@ async function initDB() {
     results = await connection.query("INSERT INTO user (email, password) values ('admin3@bcit.ca', 'admin')");
     results = await connection.query("INSERT INTO user (email, password) values ('admin4@bcit.ca', 'admin')");
 
-
     connection.end();
 }
 
