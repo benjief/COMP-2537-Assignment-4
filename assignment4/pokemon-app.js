@@ -25,8 +25,6 @@ app.use('/img', express.static('assets/imgs'));
 app.use('/fonts', express.static('assets/fonts'));
 app.use('/html', express.static('assets/html'));
 app.use('/media', express.static('assets/media'));
-app.use('/media', express.static('assets/media'));
-
 
 //logging
 const accessLogStream = rfs.createStream('access.log', {
