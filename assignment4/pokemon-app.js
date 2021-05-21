@@ -266,16 +266,31 @@ io.on('connect', function(socket) {
         console.log('User', data.name, 'Message', data.message);
 
         if(socket.userName == " ") {
-
-            io.emit("chatting", {user: data.name, text: data.message});
+            io.emit("chatting", {user: data.name, text: buildMessage(data.message)});
             socket.userName = data.name;
 
         } else {
 
-            io.emit("chatting", {user: socket.userName, text: data.message});
+            io.emit("chatting", {user: socket.userName, text: buildMessage(data.message)});
         }
     });
 });
+
+// replacing :) with emoji
+// This block was adapted from code found here:
+// source: https://stackoverflow.com/questions/32922932/parse-smilies-in-node-js-and-socket-io-chat-app
+const SMILES_MAP = {
+    ':)': '&#9786;',
+    ':(': '&#9785;'
+};
+
+function buildMessage(message) {
+    let smiles = Object.keys(SMILES_MAP);
+    smiles.forEach(smile => message = message.replace(smile, SMILES_MAP[smile]));
+    return message;
+}
+// adapted block end.
+
 
 
 // Run Server
