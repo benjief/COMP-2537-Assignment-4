@@ -7,7 +7,6 @@ let socket = io({
 $("#chatModal").on('shown.bs.modal', () => {
     socket = io.connect("http://localhost:8000");
 
-
     socket.on('user_joined', function(data) {
         let beginTag = "<p style='color: bisque;'>";
         let numOfUsers = data.numOfUsers;
@@ -68,7 +67,7 @@ $("#chatModal").on('shown.bs.modal', () => {
     
     $("#send").on('click', function() {
     
-        let name = $("#username").val();
+        let name = $("#username").text();
         let text = $("#msg").val();
     
         if(text == null || text === "") {

@@ -100,7 +100,7 @@ app.get('/profile', function (req, res) {
 
         // put the name in
         $template("#profile_name").attr("value", req.session.email);
-        $template("#greeting").html("Welcome!&nbsp<span id='#username'>" + req.session.email + '</span>');
+        $template("#greeting").html("Welcome!&nbsp<span id='username'>" + req.session.email + '</span>');
 
         // insert the left column from a different file (or could be a DB or ad network, etc.)
         let left = fs.readFileSync('./assets/templates/left_card.html', "utf8");
@@ -174,9 +174,6 @@ app.post('/authenticate', function (req, res) {
                 // authenticate the user, create a session
                 req.session.loggedIn = true;
                 req.session.email = rows.email;
-                req.session.save(function (err) {
-                    // session saved
-                })
                 res.send({ status: "success", msg: "Logged in." });
             }
         });
@@ -233,14 +230,14 @@ app.get('/logout', function (req, res) {
 })
 
 
-app.get("/chat", )
-
 var userCount = 0;
 
 io.on('connect', function(socket) {
     userCount++;
-    let str = "anonymous";
-    socket.userName = str;
+    // let str = "anonymous";
+    // socket.userName = str;
+    socket.userName = " ";
+
     io.emit('user_joined', { user: socket.userName, numOfUsers: userCount });
     console.log('Connected users:', userCount);
 
@@ -255,10 +252,9 @@ io.on('connect', function(socket) {
 
         console.log('User', data.name, 'Message', data.message);
 
-        if(socket.userName == "anonymous") {
+        if(socket.userName == " ") {
 
-            io.emit("chatting", {user: data.name, text: data.message,
-                event: socket.userName + " is now known as " + data.name});
+            io.emit("chatting", {user: data.name, text: data.message});
             socket.userName = data.name;
 
         } else {
