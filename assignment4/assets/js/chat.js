@@ -8,7 +8,7 @@ $("#chatModal").on('shown.bs.modal', () => {
     socket = io.connect("http://localhost:8000");
 
     socket.on('user_joined', function(data) {
-        let beginTag = "<p style='color: bisque;'>";
+        let beginTag = "<p style='color: brown;'>";
         let numOfUsers = data.numOfUsers;
         let userStr = "";
         if(numOfUsers == 1) {
@@ -57,7 +57,7 @@ $("#chatModal").on('shown.bs.modal', () => {
             beginTag = "<p class='myMsg'>";
             $("#chat_content").append(beginTag + "me: " + data.text + "</p>");
         } else {
-            $("#chat_content").append(beginTag + data.user + " said: " + data.text + "</p>");
+            $("#chat_content").append(beginTag + data.user + ": " + data.text + "</p>");
         }
     });
     
@@ -80,6 +80,7 @@ $("#chatModal").on('shown.bs.modal', () => {
 $("#chatModal").on('hide.bs.modal', () => {
     socket.disconnect();
     $("#chat_content").text(" ");
+    $("#msg").val("");
 });
 
     

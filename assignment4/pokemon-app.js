@@ -83,22 +83,22 @@ async function initDB() {
         DROP TABLE user; 
         CREATE TABLE IF NOT EXISTS user (
         ID int NOT NULL AUTO_INCREMENT,
+        name varchar(30),
         email varchar(30),
         password varchar(30),
         PRIMARY KEY (ID));`;
 
     // Used to wait for a promise to finish ... IOW we are avoiding asynchronous behavior
     // Why? See below!
-    await connection.query(createDBAndTables);
-    let results = await connection.query("SELECT COUNT(*) FROM user");
-    let count = results[0][0]["COUNT(*)"];
-
-    results = await connection.query("INSERT INTO user (email, password) values ('arron.ferguson@bcit.ca', 'admin')");
-    results = await connection.query("INSERT INTO user (email, password) values ('admin1@bcit.ca', 'admin')");
-    results = await connection.query("INSERT INTO user (email, password) values ('admin2@bcit.ca', 'admin')");
-    results = await connection.query("INSERT INTO user (email, password) values ('admin3@bcit.ca', 'admin')");
-    results = await connection.query("INSERT INTO user (email, password) values ('admin4@bcit.ca', 'admin')");
-
+    try {
+    results = await connection.query("INSERT INTO user (name, email, password) values ('Arron', 'arron_ferguson@bcit.ca', 'admin')");
+    results = await connection.query("INSERT INTO user (name, email, password) values ('CoolKid', 'admin1@bcit.ca', 'admin')");
+    results = await connection.query("INSERT INTO user (name, email, password) values ('SmartKid', 'admin2@bcit.ca', 'admin')");
+    results = await connection.query("INSERT INTO user (name, email, password) values ('AwesomeKid', 'admin3@bcit.ca', 'admin')");
+    results = await connection.query("INSERT INTO user (name, email, password) values ('AmazingKid', 'admin4@bcit.ca', 'admin')");
+    } catch(error) {
+        console.error("Error in inserting data into table");
+    }
     connection.end();
 }
 
@@ -113,8 +113,8 @@ app.get('/profile', function (req, res) {
         let $template = require("jquery")(templateDOM.window);
 
         // put the name in
-        $template("#profile_name").attr("value", req.session.email);
-        $template("#greeting").html("Welcome!&nbsp<span id='username'>" + req.session.email + '</span>');
+        $template("#profile_name").attr("value", `${req.session.name}(${req.session.email})!`);
+        $template("#greeting").html("Welcome!&nbsp<span id='username'>" + req.session.name + '</span>');
 
         // insert the left column from a different file (or could be a DB or ad network, etc.)
         let left = fs.readFileSync('./assets/templates/left_card.html', "utf8");
@@ -149,27 +149,6 @@ app.get('/profile', function (req, res) {
 });
 
 
-app.get('/chat', function (req, res) {
-
-    // check for a session first!
-    if (req.session.loggedIn) {
-
-        // put the name in
-        $template("#profile_name").attr("value", req.session.email);
-        $template("#greeting").html("Welcome!&nbsp<span id='#username'>" + req.session.email + '</span>');
-
-        res.set('Server', 'Wazubi Engine');
-        res.set('X-Powered-By', 'Wazubi');
-        res.send(templateDOM.serialize());
-
-    } else {
-        // not logged in - no session!
-        res.redirect('/');
-    }
-
-});
-
-
 // No longer need body-parser!
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }))
@@ -187,6 +166,7 @@ app.post('/authenticate', function (req, res) {
             } else {
                 // authenticate the user, create a session
                 req.session.loggedIn = true;
+                req.session.name = rows.name;
                 req.session.email = rows.email;
                 res.send({ status: "success", msg: "Logged in." });
             }

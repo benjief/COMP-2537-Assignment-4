@@ -42,7 +42,7 @@ body {
 }
 
 #username {
-  color: lightblue;
+  color: rgb(7, 71, 92);
 }
 
 #msg {
@@ -63,7 +63,7 @@ body {
 }
 
 .otherMsg {
-  color: darkorange;
+  color: rgb(111, 63, 4);
 }
 
 
