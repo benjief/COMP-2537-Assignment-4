@@ -26,7 +26,7 @@
         <ul>
           <li><a href="#">Box 1</a> <span class="badge_text">57</span></li>
           <li><a href="#">Box 2</a> <span class="badge_text">362</span></li>
-          <li><button type="button" id='chat-btn' data-bs-toggle="modal" data-bs-target="#exampleModal">Chat<i class="fas fa-comments"></i></button></li>
+          <li><button type="button" id='chat-btn' data-bs-toggle="modal" data-bs-target="#chatModal">Chat<i class="fas fa-comments"></i></button></li>
           <li>
             <form action="/logout" method="get">
               <input id="logout" type="submit" value="Logout" />
@@ -45,11 +45,11 @@
 
 
 <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-xl">
+<div class="modal fade" id="chatModal" tabindex="-1" aria-labelledby="chatModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-xl" id="chatModal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Chatting Room <img style="max-width: 5%;" src="img/ultraball.png" alt="ultraball"></h5>
+        <h5 class="modal-title" id="chatModalLabel">Chatting Room <img style="max-width: 5%;" src="img/ultraball.png" alt="ultraball"></h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
@@ -74,7 +74,7 @@
 
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button id="disconnect-btn" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
       </div>
     </div>
   </div>
