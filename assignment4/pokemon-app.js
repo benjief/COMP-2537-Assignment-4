@@ -234,8 +234,6 @@ var userCount = 0;
 
 io.on('connect', function(socket) {
     userCount++;
-    // let str = "anonymous";
-    // socket.userName = str;
     socket.userName = " ";
 
     io.emit('user_joined', { user: socket.userName, numOfUsers: userCount });
@@ -260,12 +258,8 @@ io.on('connect', function(socket) {
         } else {
 
             io.emit("chatting", {user: socket.userName, text: data.message});
-
         }
-
-
     });
-
 });
 
 

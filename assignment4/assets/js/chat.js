@@ -27,7 +27,7 @@ $("#chatModal").on('shown.bs.modal', () => {
     });
     
     socket.on('user_left', function(data) {
-        let beginTag = "<p style='color: burlywood;'>";
+        let beginTag = "<p style='color: darkgreen;'>";
         let numOfUsers = data.numOfUsers;
         let userStr = "";
         if(numOfUsers == 1) {
@@ -51,22 +51,18 @@ $("#chatModal").on('shown.bs.modal', () => {
     
     // this is from others - not our text
     socket.on('chatting', function(data) {
-        //console.log(data);
-        let me = $("#username").val();
-        let beginTag = "<p>";
+        let me = $("#username").text();
+        let beginTag = "<p class='otherMsg'>";
         if(me == data.user) {
-            beginTag = "<p style='color: darkblue;'>";
+            beginTag = "<p class='myMsg'>";
+            $("#chat_content").append(beginTag + "me: " + data.text + "</p>");
+        } else {
+            $("#chat_content").append(beginTag + data.user + " said: " + data.text + "</p>");
         }
-        if(data.event) {
-            $("#chat_content").append("<p style='color: orange;'>" + data.event + "</p>");
-        }
-        $("#chat_content").append(beginTag + data.user + " said: " + data.text + "</p>");
-    
     });
     
     
     $("#send").on('click', function() {
-    
         let name = $("#username").text();
         let text = $("#msg").val();
     

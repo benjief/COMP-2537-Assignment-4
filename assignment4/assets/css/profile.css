@@ -49,12 +49,23 @@ body {
   width: 100%;
 }
 
-#chat_content {
+#chat-content {
+  display: block;
+  margin-top: 10px;
   width: 100%;
   height:max-content;
   max-height: 50%;
   color: gray;
 }
+
+.myMsg {
+  color: darkblue;
+}
+
+.otherMsg {
+  color: darkorange;
+}
+
 
 .badge_text {
   font-size: 7.5pt;
